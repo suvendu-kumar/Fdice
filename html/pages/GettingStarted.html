@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started &mdash; FeatureDice 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Imputation Methods" href="methods/ImputationMethods.html" />
+    <link rel="prev" title="Installation" href="Installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FeatureDice
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import">Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-data">Reading Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-cleaning">Data Cleaning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-samples">Common samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#empty-features-removal">Empty Features removal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#imputation-remove-features">Imputation/Remove features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-normalization">Data Normalization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#normalization-standardization-transformation">Normalization/Standardization/Transformation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-fusion">Data Fusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluation-of-fusion-methods">Evaluation of fusion methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-evaluation">Simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-validation">Cross validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="methods/ImputationMethods.html">Imputation Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods/NormalizationMethods.html">Normalization Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods/FusionMethods.html">Fusion Methods</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Details:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">FeatureDice</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FeatureDice</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/pages/GettingStarted.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<section id="import">
+<h2>Import<a class="headerlink" href="#import" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">FeatureDice.fusionData</span> <span class="kn">import</span> <span class="n">fusionData</span>
+<span class="kn">from</span> <span class="nn">FeatureDice.plot_data</span> <span class="kn">import</span> <span class="n">plot_model_metrics</span>
+<span class="kn">from</span> <span class="nn">FeatureDice.plot_data</span> <span class="kn">import</span> <span class="n">plot_model_boxplot</span>
+</pre></div>
+</div>
+</section>
+<section id="reading-data">
+<h2>Reading Data<a class="headerlink" href="#reading-data" title="Link to this heading"></a></h2>
+<p>Define data path dictionary with name of dataset and csv file path. The
+csv file should contain ID and prediction_labels column along with
+features columns. If these columns named properly (ID and
+prediction_labels) you can provide<code class="docutils literal notranslate"><span class="pre">id_column</span></code> and
+<code class="docutils literal notranslate"><span class="pre">prediction_label_column</span></code> argument during initialization of
+<code class="docutils literal notranslate"><span class="pre">fusionData</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_paths</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;tabular1&quot;</span><span class="p">:</span><span class="s2">&quot;data/Chemberta_embeddings.csv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tabular2&quot;</span><span class="p">:</span><span class="s2">&quot;data/graph_embeddings.csv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tabular3&quot;</span><span class="p">:</span><span class="s2">&quot;data/mopac_descriptors.csv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tabular4&quot;</span><span class="p">:</span><span class="s2">&quot;data/mordred_descriptors.csv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tabular5&quot;</span><span class="p">:</span><span class="s2">&quot;data/signaturizer_descriptors.csv&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>loading data from csv files and creating <code class="docutils literal notranslate"><span class="pre">fusionData</span></code> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fusiondata</span> <span class="o">=</span> <span class="n">fusionData</span><span class="p">(</span><span class="n">data_paths</span> <span class="o">=</span> <span class="n">data_paths</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After loading data, you can use <code class="docutils literal notranslate"><span class="pre">fusionData</span></code> object to access your by
+<code class="docutils literal notranslate"><span class="pre">dataframes</span></code> dictionary in fusion data object. For example to get
+tabular1 dataframe by the following code. This is important to look at
+the datasets before doing any analysis.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fusiondata</span><span class="o">.</span><span class="n">dataframes</span><span class="p">[</span><span class="s1">&#39;tabular1&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="data-cleaning">
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading"></a></h2>
+<section id="common-samples">
+<h3>Common samples<a class="headerlink" href="#common-samples" title="Link to this heading"></a></h3>
+<p>Keep only samples (rows) that are common across dataset. This is
+important if there is difference in set of samples across datasets.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fusiondata</span><span class="o">.</span><span class="n">keep_common_samples</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="empty-features-removal">
+<h3>Empty Features removal<a class="headerlink" href="#empty-features-removal" title="Link to this heading"></a></h3>
+<p>Features in data should be removed if there is higher percentage of
+missing values. Remove columns with more than a certain percentage of
+missing values from dataframes can solve this. The percentage threshold
+of missing values to drop a column. <code class="docutils literal notranslate"><span class="pre">threshold</span></code> should be between 0
+and 100. <code class="docutils literal notranslate"><span class="pre">ShowMissingValues</span></code> is function which prints the count of
+missing values in each dataset.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fusiondata</span><span class="o">.</span><span class="n">ShowMissingValues</span><span class="p">()</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">remove_empty_features</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">ShowMissingValues</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="imputation-remove-features">
+<h3>Imputation/Remove features<a class="headerlink" href="#imputation-remove-features" title="Link to this heading"></a></h3>
+<p>Imputation of data if the data have low percentage of missing values.
+<code class="docutils literal notranslate"><span class="pre">ImputeData</span></code> is a function with takes a single argument which is
+method to be used for imputation. The <code class="docutils literal notranslate"><span class="pre">method</span></code> can be “knn”, “mean”,
+“mode”, “median”, and “interpolate”.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imputing values with missing values</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">ShowMissingValues</span><span class="p">()</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">ImputeData</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;knn&quot;</span><span class="p">)</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">ShowMissingValues</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="data-normalization">
+<h2>Data Normalization<a class="headerlink" href="#data-normalization" title="Link to this heading"></a></h2>
+<section id="normalization-standardization-transformation">
+<h3>Normalization/Standardization/Transformation<a class="headerlink" href="#normalization-standardization-transformation" title="Link to this heading"></a></h3>
+<p>Data should be normalized before we proceed to fusion. There are three
+functions which can be used for data normalization <code class="docutils literal notranslate"><span class="pre">scale_data</span></code>,
+<code class="docutils literal notranslate"><span class="pre">normalize_data</span></code> and <code class="docutils literal notranslate"><span class="pre">transform_data</span></code>. These functions takes single
+argument that is type of scaling/normalization/transformation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standardize data</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">scale_data</span><span class="p">(</span><span class="n">scaling_type</span> <span class="o">=</span> <span class="s1">&#39;standardize&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>scaling type can be one of these ‘minmax’ , ‘minmax’ ‘robust’ or
+‘pareto’</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalize data</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">normalize_data</span><span class="p">(</span><span class="n">normalization_type</span> <span class="o">=</span><span class="s1">&#39;constant_sum&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>normalization types can be one of these ‘constant_sum’, ‘L1’ ,‘L2’ or
+‘max’</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transform data</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">transform_df</span><span class="p">(</span><span class="n">transformation_type</span> <span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>transformation_type can be one of these ‘cubicroot’, ‘log10’, ‘log’,
+‘log2’, ‘sqrt’, ‘powertransformer’, or ‘quantiletransformer’.</p>
+</section>
+</section>
+<section id="data-fusion">
+<h2>Data Fusion<a class="headerlink" href="#data-fusion" title="Link to this heading"></a></h2>
+<p>Data fusion will take all the data that is normalized in previous step
+and make a single fused data. This will result in a single dataframe
+<code class="docutils literal notranslate"><span class="pre">fusedData</span></code> in the <code class="docutils literal notranslate"><span class="pre">fusionData</span></code> object.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># fusing features in different data</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">fuseFeatures</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>  <span class="n">method</span><span class="o">=</span><span class="s2">&quot;plsda&quot;</span><span class="p">)</span>
+<span class="n">fused_dataframe</span> <span class="o">=</span> <span class="n">fusiondata</span><span class="o">.</span><span class="n">fusedData</span>
+</pre></div>
+</div>
+<p>Other methods available for fusing data are ‘pca’, ‘ica’, ‘ipca’, ‘cca’,
+‘tsne’, ‘kpca’, ‘rks’, ‘SEM’, ‘autoencoder’, and ‘tensordecompose’, The
+argument number of components can be provided to by <code class="docutils literal notranslate"><span class="pre">n_components</span></code>
+parameter to <code class="docutils literal notranslate"><span class="pre">fuseFeature</span></code> function.</p>
+</section>
+<section id="evaluation-of-fusion-methods">
+<h2>Evaluation of fusion methods<a class="headerlink" href="#evaluation-of-fusion-methods" title="Link to this heading"></a></h2>
+<section id="simple-evaluation">
+<h3>Simple evaluation<a class="headerlink" href="#simple-evaluation" title="Link to this heading"></a></h3>
+<p>Data fused by different methods can be evaluated using different machine
+learning models using <code class="docutils literal notranslate"><span class="pre">evaluate_fusion_models</span></code> function. This function
+takes normalized data, split the data into test and train dataset and
+after that makes different ML model from fusion of training data and
+then evaluate the models by fusion of testing data. It also takes
+argument <code class="docutils literal notranslate"><span class="pre">methods</span></code> a list of fusion methods to evaluate. Optional
+arguments is <code class="docutils literal notranslate"><span class="pre">n_components</span></code> the number of components use for the
+fusion which is 10 by default.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate all models</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">evaluate_fusion_models</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span><span class="s1">&#39;cca&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Metrics of all the models can be accessed by <code class="docutils literal notranslate"><span class="pre">Accuracy_metrics</span></code> in
+<code class="docutils literal notranslate"><span class="pre">fusionData</span></code> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Accuracy metrics all models</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">Accuracy_metrics</span>
+<span class="c1">#top 10 models</span>
+<span class="n">top_models</span> <span class="o">=</span> <span class="n">fuseiondata</span><span class="o">.</span><span class="n">Accuracy_metrics</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,:]</span>
+</pre></div>
+</div>
+<p>Plotting the <code class="docutils literal notranslate"><span class="pre">Accuracy_metrics</span></code> can done by the following function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># give top_model dataframe &amp; output directory name for saving plots</span>
+<span class="n">plot_model_metrics</span><span class="p">(</span><span class="n">top_models</span><span class="p">,</span> <span class="n">save_dir</span> <span class="o">=</span> <span class="s2">&quot;output_plots&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="cross-validation">
+<h3>Cross validation<a class="headerlink" href="#cross-validation" title="Link to this heading"></a></h3>
+<p>The function <code class="docutils literal notranslate"><span class="pre">evaluate_fusion_model_nfold</span></code> can do n fold cross
+validation for evaluation of fusion methods, it takes Optional
+arguments <code class="docutils literal notranslate"><span class="pre">methods</span></code> list argument to evaluate the fusion model and
+<code class="docutils literal notranslate"><span class="pre">n_components</span></code> the number of components use for the fusion and the
+number of folds to use for cross-validation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate all models</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">evaluate_fusion_models_nfold</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                                          <span class="n">methods</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span><span class="s1">&#39;cca&#39;</span><span class="p">],</span>
+                                          <span class="n">n_folds</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Metrics of all the models can be accessed by <code class="docutils literal notranslate"><span class="pre">Accuracy_metrics</span></code> in
+<code class="docutils literal notranslate"><span class="pre">fusionData</span></code> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Accuracy metrics all models</span>
+<span class="n">fusiondata</span><span class="o">.</span><span class="n">Accuracy_metrics</span>
+<span class="c1">#top 10 models</span>
+<span class="n">top_models</span> <span class="o">=</span> <span class="n">fuseiondata</span><span class="o">.</span><span class="n">Accuracy_metrics</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,:]</span>
+</pre></div>
+</div>
+<p>Plotting of the <code class="docutils literal notranslate"><span class="pre">Accuracy_metrics</span></code> can done by the following function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># give top model dataframe &amp; output directory name for saving box plots</span>
+<span class="n">plot_model_boxplot</span><span class="p">(</span><span class="n">top_models</span><span class="p">,</span> <span class="n">save_dir</span> <span class="o">=</span><span class="s1">&#39;outputs&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="methods/ImputationMethods.html" class="btn btn-neutral float-right" title="Imputation Methods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Suvendu Kumar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
